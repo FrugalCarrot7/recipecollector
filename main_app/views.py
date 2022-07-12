@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
 from .models import Recipe
 
@@ -18,3 +19,16 @@ def recipes_index(request):
 def recipes_detail(request, recipe_id):
   recipe = Recipe.objects.get(id=recipe_id)
   return render(request, 'recipes/detail.html', { 'recipe': recipe })
+
+class RecipeCreate(CreateView):
+  model = Recipe
+  fields = '__all__'
+  # success_url = '/cats/'
+
+class RecipeUpdate(UpdateView):
+  model = Recipe
+  fields = '__all__'
+
+class RecipeDelete(DeleteView):
+  model = Recipe
+  success_url = '/recipes/'
