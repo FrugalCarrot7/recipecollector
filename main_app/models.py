@@ -11,7 +11,7 @@ class Recipe(models.Model):
         return reverse('detail', kwargs={'recipe_id': self.id})
 
 class Step(models.Model):
-  step = models.IntegerField()
+  step = models.IntegerField('add the step number')
   instructions = models.CharField(max_length=500)
 
   recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)

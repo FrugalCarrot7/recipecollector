@@ -17,5 +17,19 @@
 <div>
     <a href="/recipes"><button>Go Back</button></a>
 </div>
-
+<div class="col s6">
+  <table class="striped">
+    <thead>
+      <tr><th>Step</th><th>Instruction</th></tr>
+    </thead>
+    <tbody>
+      {% for step in recipe.step_set.all %}
+        <tr>
+          <td>{{step.step}}</td>
+          <td>{{step.instructions}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}
