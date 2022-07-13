@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.http import HttpResponse
-from .models import Recipe
+from django.views.generic import ListView, DetailView
+from .models import Recipe, Side
 from .forms import StepForm
 
 #temp data
@@ -42,3 +42,21 @@ def add_step(request, recipe_id):
     new_step.recipe_id = recipe_id 
     new_step.save()
   return redirect('detail', recipe_id=recipe_id)
+
+class SideList(ListView):
+  model = Side
+
+class SideDetail(DetailView):
+  model = Side
+
+class SideCreate(CreateView):
+  model = Side
+  fields = '__all__'
+
+class SideUpdate(UpdateView):
+  model = Side
+  fields = ['name', 'price']
+
+class SideDelete(DeleteView):
+  model = Side
+  success_url = '/recipes/'

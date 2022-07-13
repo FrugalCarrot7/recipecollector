@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
-class Sides(models.Model):
+class Side(models.Model):
   name = models.CharField(max_length=20)
   price = models.IntegerField()
 
