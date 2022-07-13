@@ -9,3 +9,9 @@ class Recipe(models.Model):
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'recipe_id': self.id})
+
+class Step(models.Model):
+  step = models.IntegerField()
+  instructions = models.CharField(max_length=500)
+
+  recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
