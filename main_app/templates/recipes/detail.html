@@ -18,6 +18,11 @@
     <a href="/recipes"><button>Go Back</button></a>
 </div>
 <div class="col s6">
+  <form action="{% url 'add_step' recipe.id %}" method="POST">
+    {% csrf_token %}
+    {{ step_form.as_p }}
+    <input type="submit" class="btn" value="Add a Step">
+  </form>
   <table class="striped">
     <thead>
       <tr><th>Step</th><th>Instruction</th></tr>
