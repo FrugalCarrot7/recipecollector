@@ -15,5 +15,6 @@ urlpatterns = [
   path('sides/create/', views.SideCreate.as_view(), name='sides_create'),
   path('sides/<int:pk>/update/', views.SideUpdate.as_view(), name='sides_update'),
   path('sides/<int:pk>/delete/', views.SideDelete.as_view(), name='sides_delete'),
+  path('recipes/<int:recipe_id>/assoc_side/<int:side_id>/', views.assoc_side, name='assoc_side'),
 ]
 

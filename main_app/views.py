@@ -26,6 +26,10 @@ def recipes_detail(request, recipe_id):
      'recipe': recipe, 'step_form': step_form, 'sides': sides_recipe_doesnt_have 
      })
 
+def assoc_side(request, recipe_id, side_id):
+  Recipe.objects.get(id=recipe_id).sides.add(side_id)
+  return redirect('detail', recipe_id=recipe_id)
+
 class RecipeCreate(CreateView):
   model = Recipe
   fields = '__all__'
