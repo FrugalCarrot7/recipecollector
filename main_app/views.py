@@ -52,6 +52,7 @@ class SideDetail(DetailView):
 class SideCreate(CreateView):
   model = Side
   fields = '__all__'
+  success_url = '/recipes/'
 
 class SideUpdate(UpdateView):
   model = Side
