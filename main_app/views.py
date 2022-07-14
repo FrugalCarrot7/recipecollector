@@ -19,8 +19,12 @@ def recipes_index(request):
 
 def recipes_detail(request, recipe_id):
   recipe = Recipe.objects.get(id=recipe_id)
+  id_list = recipe.sides.all().values_list('id')
+  sides_recipe_doesnt_have = Side.objects.exclude(id__in=id_list)
   step_form = StepForm()
-  return render(request, 'recipes/detail.html', { 'recipe': recipe, 'step_form': step_form })
+  return render(request, 'recipes/detail.html', {
+     'recipe': recipe, 'step_form': step_form, 'sides': sides_recipe_doesnt_have 
+     })
 
 class RecipeCreate(CreateView):
   model = Recipe

@@ -55,4 +55,27 @@
       <h5>No Sides. You just might starve</h5>
     {% endif %}
   </div>
+  <div class="col s6">
+    <h3>Available Sides</h3>
+    {% if sides.count %}
+      {% for side in sides.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              A {{ side.name }} {{ side.price }}
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn">Add</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>{{recipe.name}} already has all of the available sides</h5>
+    {% endif %}
+  </div>
+</div>
 {% endblock %}
